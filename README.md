@@ -11,6 +11,12 @@
 
 走标准输入输出，不开任何网络服务；只有在助手调用发送工具时才往外连你配置的出口。只依赖官方 `mcp` 库。
 
+### 先看你需要哪个
+
+- **只想让 AI 聊天时发表情包，而且 AI 和聊天窗在同一个程序里**（Kelivo 这类能接 MCP 的聊天客户端）：用不着这个插头，装同一个作者写的 `yelin-sticker-mcp` 就够了。
+- **AI 和聊天页分开跑**（AI 在服务器终端或后台，你在自己的网页或 App 里聊天）：装这个，再在聊天页开一个收件地址，`examples/` 里有现成的 Python 和 Node 例子。配上 yelin-sticker-mcp，AI 挑好表情交给它发；AI 自己画的图、写的歌、文件也能发。
+- **想发到 Telegram、Discord 或 ntfy**：这三个是现成出口，填好令牌就能用。
+
 ### 工具
 
 | 工具 | 做什么 |
@@ -296,6 +302,12 @@ ntfy. Each outlet reports success or failure on its own, and one failing never s
 
 It talks over stdin/stdout and opens no network service; it only connects to your configured outlets when a send
 tool is called. The only dependency is the official `mcp` package.
+
+### Which one do you need
+
+- **You only want the AI to send stickers in chat, and the AI and the chat window are one program** (an MCP-capable chat client such as Kelivo): you don't need this plug; `yelin-sticker-mcp` (same author) is enough.
+- **The AI runs apart from the chat page** (the AI is in a terminal or a back end on a server, and you chat in your own web page or app): install this one and give your chat page an inbox; `examples/` has ready-made Python and Node receivers. Together with yelin-sticker-mcp, the AI picks a sticker and this plug sends it; pictures the AI made, songs and files go the same way.
+- **You want messages in Telegram, Discord or ntfy**: those three are built-in outlets; fill in the token and they work.
 
 ### Tools
 
