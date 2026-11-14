@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+# files saved by the example receivers
+examples/inbox/
+# local pre-publish check (script + report), never published
+outgoing_check.py
+OUTGOING_CHECK.txt
