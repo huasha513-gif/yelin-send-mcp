@@ -6,16 +6,16 @@
 
 ## 中文
 
-一个 stdio MCP 服务：让 AI 助手**主动**把话、图、歌、表情和文件发到你指定的地方。
-出口可以同时配好几个：你自己搓的前端（webhook）、Telegram、Discord、ntfy。每个出口单独回报成功还是失败，一个坏了不耽误别的。
+一个 stdio MCP 服务：让 AI 助手**主动**把话、图、歌、表情和文件发到**你自己的聊天页**（自己做的网页或 App）。
+聊天页那边开一个收件口子就能收，`examples/` 里有现成的 Python 和 Node 例子。另外也顺带支持 Telegram、Discord、ntfy。可以同时发好几处，每处单独回报成功还是失败，一处坏了不耽误别处。
 
 走标准输入输出，不开任何网络服务；只有在助手调用发送工具时才往外连你配置的出口。只依赖官方 `mcp` 库。
 
 ### 先看你需要哪个
 
 - **只想让 AI 聊天时发表情包，而且你的聊天窗会显示工具结果里的图片**（有的 MCP 客户端会，比如 Kelivo；以你用的版本为准）：用不着这个插头，装同一个作者写的 `yelin-sticker-mcp` 就够了。
-- **要把东西送到另一个地方**（你自己做的网页或 App 聊天页、Telegram、Discord、ntfy），或者要发 AI 自己画的图、写的歌、文件：装这个。发到自己的页面要有收件端，`examples/` 里有 Python 和 Node 例子，收到以后还要自己接进页面显示。配上 `yelin-sticker-mcp` 时，AI 把挑好的表情路径交给它发，这个插头要能读到那个路径。
-- **Telegram、Discord、ntfy**：这三个是现成出口，按下面"出口怎么配"填好地址、目标和需要的凭据就能用（Telegram 要 bot 令牌和 chat_id，Discord 要 webhook 地址，ntfy 要服务器和主题）。
+- **要把东西送到你自己做的聊天页**（网页或 App），或者要发 AI 自己画的图、写的歌、文件：装这个。发到自己的页面要有收件端，`examples/` 里有 Python 和 Node 例子，收到以后还要自己接进页面显示。配上 `yelin-sticker-mcp` 时，AI 把挑好的表情路径交给它发，这个插头要能读到那个路径。
+- **顺带支持的出口**：Telegram、Discord、ntfy，按下面"出口怎么配"填好地址、目标和需要的凭据就能用（Telegram 要 bot 令牌和 chat_id，Discord 要 webhook 地址，ntfy 要服务器和主题）。
 
 ### 工具
 
@@ -297,8 +297,9 @@ MIT，见 `LICENSE`。
 ## English
 
 A stdio MCP server that lets an AI assistant **reach out on its own**: send text, images, songs, stickers and files
-to the places you choose. Several outlets can be active at once: your own front end (webhook), Telegram, Discord and
-ntfy. Each outlet reports success or failure on its own, and one failing never stops the others.
+to **your own chat page** (a web page or app you built). The page only needs an inbox; `examples/` has ready-made
+Python and Node ones. Telegram, Discord and ntfy are supported as extra outlets. Several can be active at once; each
+reports success or failure on its own, and one failing never stops the others.
 
 It talks over stdin/stdout and opens no network service; it only connects to your configured outlets when a send
 tool is called. The only dependency is the official `mcp` package.
@@ -306,8 +307,8 @@ tool is called. The only dependency is the official `mcp` package.
 ### Which one do you need
 
 - **You only want the AI to send stickers in chat, and your chat window shows images from tool results** (some MCP clients do, Kelivo for example; check the version you use): you don't need this plug; `yelin-sticker-mcp` (same author) is enough.
-- **Things have to reach another place** (your own web page or app, Telegram, Discord, ntfy), or the AI should send pictures it made, songs or files: install this one. Your own page needs a receiver (`examples/` has Python and Node ones), and you still wire what arrives into the page. With `yelin-sticker-mcp`, the AI hands this plug the path of the sticker it picked, so this plug must be able to read that path.
-- **Telegram, Discord, ntfy**: built-in outlets; set the address, the target and the credentials each one needs as described under "Configuring outlets" (Telegram: bot token and chat_id; Discord: webhook URL; ntfy: server and topic).
+- **Things have to reach your own chat page** (a web page or app), or the AI should send pictures it made, songs or files: install this one. Your own page needs a receiver (`examples/` has Python and Node ones), and you still wire what arrives into the page. With `yelin-sticker-mcp`, the AI hands this plug the path of the sticker it picked, so this plug must be able to read that path.
+- **Extra outlets**: Telegram, Discord and ntfy; set the address, the target and the credentials each one needs as described under "Configuring outlets" (Telegram: bot token and chat_id; Discord: webhook URL; ntfy: server and topic).
 
 ### Tools
 
